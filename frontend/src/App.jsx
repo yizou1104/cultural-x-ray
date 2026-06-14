@@ -34,7 +34,7 @@ export default function App() {
     setPendingTokens([])
     setReadyTokens([])
     setOverall(null)
-    setHighlightedIndices(new Set())
+
     setActiveIndex(null)
     setError(null)
     setPhase('idle')
