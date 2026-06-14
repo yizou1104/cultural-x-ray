@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { API_BASE } from '../api'
 import { THEME } from '../theme'
 
 const SUGGESTED_QUESTIONS = [
@@ -29,7 +28,7 @@ export default function ChatPanel({ text, language }) {
     setMessages(prev => [...prev, { role: 'user', text: q }])
     setLoading(true)
     try {
-      const res = await fetch(`${API_BASE}/chat`, {
+      const res = await fetch('/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, language, question: q }),

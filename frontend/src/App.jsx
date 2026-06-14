@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { API_BASE } from './api'
 import { THEME } from './theme'
 import TokenDisplay from './components/TokenDisplay'
 import ExplanationCard from './components/ExplanationCard'
@@ -28,7 +27,7 @@ export default function App() {
   const t = THEME[language]
 
   useEffect(() => {
-    fetch(`${API_BASE}/examples`).then(r => r.json()).then(setExamples).catch(() => {})
+    fetch('/examples').then(r => r.json()).then(setExamples).catch(() => {})
   }, [])
 
   function reset() {
@@ -58,7 +57,7 @@ export default function App() {
     setPhase('generating')
 
     try {
-      const res = await fetch(`${API_BASE}/analyze`, {
+      const res = await fetch('/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, language }),
@@ -118,7 +117,7 @@ export default function App() {
   async function handleEnglishEquiv() {
     setLoadingEquiv(true)
     try {
-      const res = await fetch(`${API_BASE}/english_equivalent`, {
+      const res = await fetch('/english_equivalent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, language }),
