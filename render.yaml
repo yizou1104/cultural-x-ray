@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: cultural-x-ray-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: FEATHERLESS_API_KEY
+        sync: false
+
+  - type: static
+    name: cultural-x-ray-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: cultural-x-ray-backend
+          property: url
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
