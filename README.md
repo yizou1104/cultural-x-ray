@@ -2,7 +2,7 @@
 
 An interactive web app that dissects Chinese and Hindi sentences word by word, revealing the literal meaning, cultural context, and pragmatic significance behind each token.
 
-Built for LingHacks.
+Built for LingHacks 2026.
 
 ## Stack
 
@@ -39,13 +39,3 @@ Open `http://localhost:5173`.
 cd backend
 python populate_cache.py
 ```
-
-## Features
-
-- Real-time token streaming — chips light up as each analysis completes
-- AI segmentation refinement — splits culturally loaded compounds, preserves proper names
-- Word-boundary bars — shows which split characters came from the same original word
-- Cultural importance heat map — 0–3 score colors each chip by how much explanation a non-native speaker needs
-- Phrase context — origin, usage, and significance for idioms and proverbs
-- English equivalent — closest English idiom or expression on demand
-- Follow-up chat — ask questions about any aspect of the sentence
