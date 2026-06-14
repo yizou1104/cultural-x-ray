@@ -34,7 +34,7 @@ export default function TokenDisplay({
       {groups.map((group, gi) => {
         const isMulti = group.indices.length > 1
         return (
-          <div key={gi} className={`relative flex ${isMulti ? 'pb-3' : ''}`}>
+          <div key={gi} className="relative flex pb-3">
             {group.indices.map((i, ti) => {
               const tokenStr = pendingTokens[i]
               const isReady  = readyTokens[i] != null
@@ -75,9 +75,7 @@ export default function TokenDisplay({
               )
             })}
 
-            {isMulti && (
-              <div className={`absolute bottom-0 left-2 right-2 h-0.5 rounded-full ${t.groupBar}`} />
-            )}
+            <div className={`absolute bottom-0 left-2 right-2 h-0.5 rounded-full ${t.groupBar}`} />
           </div>
         )
       })}
