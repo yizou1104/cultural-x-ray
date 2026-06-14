@@ -7,13 +7,16 @@ from pydantic import BaseModel
 from segmenter import segment
 from llm import analyze_token, analyze_overall, refine_segmentation, score_tokens, get_english_equivalent, chat_about_sentence
 from examples import EXAMPLES
-from cache import CACHE
+try:
+    from cache import CACHE
+except ImportError:
+    CACHE: dict[str, dict] = {}
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
